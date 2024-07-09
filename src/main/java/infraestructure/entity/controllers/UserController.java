@@ -38,12 +38,13 @@ public class UserController extends HttpServlet {
             } else {
                 resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
                 resp.getWriter().write("User not found \n");
-                resp.getWriter().write("Users in database: \n");
-                List<User> allUsers = userService.getAllUsers();
-                String jsonResponse = mapper.writeValueAsString(allUsers);
-                resp.setContentType("application/json");
-                resp.getWriter().write(jsonResponse);
             }
+        } else {
+            resp.getWriter().write("Users in database: \n");
+            List<User> allUsers = userService.getAllUsers();
+            String jsonResponse = mapper.writeValueAsString(allUsers);
+            resp.setContentType("application/json");
+            resp.getWriter().write(jsonResponse);
         }
 
     }
